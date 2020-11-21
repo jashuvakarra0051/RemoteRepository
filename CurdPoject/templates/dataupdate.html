@@ -1,0 +1,40 @@
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" >
+                       <form method="POST" action="{% url 'updated_data_save' updatedata.id %}">
+                    {% csrf_token %}
+                    <input type="text" name="fname" class="form-control" placeholder="enter first name" value="{{updatedata.first_name }}">
+                    <input type="text" name="lname" class="form-control" placeholder="enter lastname" value="{{ updatedata.last_name }}">
+                    <input type="text" name="cname" class="form-control" placeholder="class name" value="{{ updatedata.class_name }}">
+                    <input type="text" name="sname" class="form-control" placeholder="section name" value="{{ updatedata.section_name }}">
+                    <input type="number" name="mob" class="form-control" placeholder="enter mobile" value="{{ updatedata.mobile_number }}">
+                    <input type="email" name="mail" class="form-control" placeholder="enter email" value="{{ updatedata.email_id }}">
+                    <input type="number" name="tel" class="form-control" placeholder="telugu marks" value="{{ updatedata.telugu }}">
+                    <input type="number" name="hin" class="form-control" placeholder="hindi marks" value="{{ updatedata.hindi }}">
+                    <input type="number" name="eng" class="form-control" placeholder="english marks" value="{{ updatedata.english }}">
+                    <input type="number" name="mat" class="form-control" placeholder="maths marks" value="{{ updatedata.maths }}">
+                    <input type="number" name="sci" class="form-control" placeholder="science marks" value="{{ updatedata.science }}">
+                    <input type="number" name="soc" class="form-control" placeholder="socila marks" value="{{ updatedata.social }}"><br>
+                    <center>
+                    <input type="submit" value="update" class="btn btn-success">
+                    <input type="reset" value="CLEAR" class="btn btn btn-danger">
+                    </center>
+
+
+
+
+                </form>
+
+        </div>
+
+    </div>
+</body>
+</html>

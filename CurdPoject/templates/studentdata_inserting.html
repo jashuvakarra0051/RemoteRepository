@@ -1,0 +1,146 @@
+<html>
+<head>
+    <title>
+
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        input{
+            margin-top: 10px;
+        }
+
+    th,
+    td{
+        border: 2px black solid;
+        font-size: 12px;
+    }
+    tbody {
+  background-color: lightblue;
+}
+    h5{
+        text-align: center;
+    }
+    h1{
+        text-align: center;
+        color: darkred;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h5 >Please fill below details</h5>
+                    <input type="text" name="fname" class="form-control" placeholder="Enter first name">
+                    <input type="text" name="lname" class="form-control" placeholder="Enter lastname">
+                    <input type="text" name="cname" class="form-control" placeholder="Collegename">
+                    <input type="text" name="sname" class="form-control" placeholder="Section name">
+                    <input type="number" name="mob" class="form-control" placeholder="Enter mobile">
+                    <input type="email" name="mail" class="form-control" placeholder="Enter email">
+                    <input type="number" name="tel" class="form-control" placeholder="Telugu marks">
+                    <input type="number" name="hin" class="form-control" placeholder="Hindi marks">
+                    <input type="number" name="eng" class="form-control" placeholder="English marks">
+                    <input type="number" name="mat" class="form-control" placeholder="Maths marks">
+                    <input type="number" name="sci" class="form-control" placeholder="Science marks">
+                    <input type="number" name="soc" class="form-control" placeholder="Social marks">
+                    <center>
+                    <input type="submit" value="SUBMIT" class="btn btn btn-success">
+                    <input type="reset" value="CLEAR" class="btn btn btn-danger">
+                    </center>
+
+
+
+
+                </form>
+
+
+            </div>
+
+
+
+            <div class="col-md-8">
+            <h1>Student Details</h1>
+                {% if displaydata %}
+                    <table class="table table-border ">
+                        <thead class="thead-dark">
+                        <tr class="text-center text-capital">
+                            <th scope="row">First name</th>
+                            <th>Lastname</th>
+                            <th>Collegename</th>
+                            <th>section</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th>Telugu</th>
+                            <th>Hindi</th>
+                            <th>English</th>
+                            <th>Maths</th>
+                            <th>Science</th>
+                            <th>Social</th>
+                            <th>Actions </th>
+                        </tr>
+                        </thead>
+
+                    <tbody class="table table-border text-black">
+                    {% for i in displaydata  %}
+                        <tr>
+                        <td>{{ i.first_name }}</td>
+                        <td>{{ i.last_name }}</td>
+                        <td>{{ i.class_name }}</td>
+                        <td>{{ i.section_name }}</td>
+                        <td>{{ i.mobile_number }}</td>
+                        <td>{{ i.email_id }}</td>
+                        <td>{{ i.telugu }}</td>
+                        <td>{{ i.hindi }}</td>
+                        <td>{{ i.english }}</td>
+                        <td>{{ i.maths }}</td>
+                        <td>{{ i.science }}</td>
+                        <td>{{ i.social }}</td>
+
+                        <td>
+                            <a href="{% url 'update' i.id %}" class="btn btn-success">Update</a>
+                            <a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                    </table>
+
+
+
+                 {% else %}
+                    <h1 >No data available</h1>
+
+
+                {% endif %}
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</body>
+</html>
